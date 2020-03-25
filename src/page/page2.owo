@@ -1,0 +1,17 @@
+<template lang="pug">
+<div class="page-2">
+  <img class="so so-0" src="@|83.png|" o-animation="shrink" go="page3">
+  <img class="so so-1" src="@|62.png|">
+  <img class="so so-2" src="@|146.jpg|">
+</div>
+</template>
+<script>
+module.exports = {
+}
+</script>
+<style lang="less">
+.so {position: absolute;}
+.so-0 {left: 287px;top: 1271px;z-index: 3;}
+.so-1 {left: 87px;top: 448px;z-index: 2;}
+.so-2 {left: 0px;top: 0px;}
+</style>

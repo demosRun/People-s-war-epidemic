@@ -1,0 +1,64 @@
+<template lang="pug">
+<div class="page-3">
+  <img class="so so-0" src="@|85.png|" o-tap="last">
+  <img class="so so-1" src="@|83.png|" o-tap="next">
+  <img class="so so-2" src="@|89.png|" o-tap="owo.script.poster.showPoster()">
+  <img class="so so-4" src="@|148.jpg|">
+  <div class="image-list">
+    <img class="so" src="@|147.png|">
+    <img class="so" src="@|147.png|">
+    <img class="so" src="@|147.png|">
+    <img class="so" src="@|147.png|">
+    <img class="so" src="@|147.png|">
+    <img class="so" src="@|147.png|">
+    <img class="so" src="@|147.png|">
+  </div>
+</div>
+</template>
+<script>
+module.exports = {
+  data: {
+    nowIndex: 0,
+    allNumber: 0
+  },
+  created: function () {
+    const imageList = owo.query('.image-list .so')
+    this.data.allNumber = imageList.length
+    console.log(imageList)
+    this.showImageIndex(this.data.nowIndex)
+  },
+  showImageIndex: function (ind) {
+    const imageList = owo.query('.image-list .so')
+    for (let index = 0; index < imageList.length; index++) {
+      const element = imageList[index];
+      if (index == ind) {
+        imageList[index].style.display = 'block'
+      } else {
+        imageList[index].style.display = 'none'
+      }
+    }
+  },
+  last: function () {
+    if (this.data.nowIndex > 0) {
+      this.showImageIndex(--this.data.nowIndex)
+    } else {
+      owo.tool.toast('已经是最前了!')
+    }
+  },
+  next: function () {
+    if (this.data.nowIndex < (this.data.allNumber - 1)) {
+      this.showImageIndex(++this.data.nowIndex)
+    } else {
+      owo.tool.toast('已经是最后了!')
+    }
+  }
+}
+</script>
+<style lang="less">
+.so {position: absolute;}
+.so-0 {left: 91px;top: 1270px;z-index: 4;}
+.so-1 {left: 298px;top: 1270px;z-index: 3;}
+.so-2 {left: 499px;top: 1270px;z-index: 2;}
+.image-list .so {left: 43px;top: 392px;z-index: 1;display: none;}
+.so-4 {left: 0px;top: 0px;}
+</style>
