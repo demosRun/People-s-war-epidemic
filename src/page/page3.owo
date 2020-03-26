@@ -22,6 +22,19 @@ module.exports = {
     allNumber: 0
   },
   created: function () {
+    // 滑动检测
+    owo.tool.touch({
+      el: this.$el,
+      end: function end(e) {
+        if (e.swipe[0] > 100) {
+          owo.go({
+            page: 'page2',
+            noBack: true
+          })
+        }
+      }
+    })
+
     const imageList = owo.query('.image-list .so')
     this.data.allNumber = imageList.length
     console.log(imageList)
@@ -42,7 +55,10 @@ module.exports = {
     if (this.data.nowIndex > 0) {
       this.showImageIndex(--this.data.nowIndex)
     } else {
-      owo.tool.toast('已经是最前了!')
+      owo.go({
+        page: 'page2',
+        noBack: true
+      })
     }
   },
   next: function () {

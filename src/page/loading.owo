@@ -67,7 +67,7 @@
 
 <style lang="less">
 .loading-box {
-  z-index: 100;
+  z-index: 101;
   background-image: url('@|page2.jpg|');
 }
 .loading {

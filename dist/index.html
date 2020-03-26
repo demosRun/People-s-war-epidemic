@@ -42,12 +42,12 @@
     </div>
     <!-- 页面[page1]-->
     <div class="page-1 page" template="page1" style="display: none;">
-      <img class="so so-0 owo-animation-shrink" src="./static/resource/10.png" o-animation="shrink" go="page2">
+      <img class="so so-0 owo-animation-shrink" src="./static/resource/10.png" o-animation="shrink" go="page2/////true">
       <img class="so so-1" src="./static/resource/33.jpg">
     </div>
     <!-- 页面[page2]-->
     <div class="page-2 page" template="page2" style="display: none;">
-      <img class="so so-0 owo-animation-shrink" src="./static/resource/83.png" o-animation="shrink" go="page3">
+      <img class="so so-0 owo-animation-shrink" src="./static/resource/83.png" o-animation="shrink" go="page3/////true">
       <img class="so so-1" src="./static/resource/62.png">
       <img class="so so-2" src="./static/resource/146.jpg">
     </div>
@@ -68,14 +68,14 @@
       </div>
     </div>
     <!-- 页面[poster]-->
-    <div class="blinker-poster owo-block" template="poster" style="display: none;">
-      <div class="poster-box" o-tap="hidePoster">
+    <div class="blinker-poster owo-block" o-tap="hidePoster" template="poster" style="display: none;">
+      <div class="poster-box">
         <img class="poster" src="./static/resource/poster.jpg">
         <p>长按保存图片</p>
       </div>
     </div>
-    <!-- 页面[music]-->
-    <div class="music-menu owo-block" template="music" style="display: none;">
+    <!-- 页面[playMusic]-->
+    <div class="music-menu owo-block" template="playMusic" style="display: none;">
       <img class="music-icon" src="./static/resource/music.png" o-tap="switchPlay">
     </div>
   </div>
@@ -87,7 +87,7 @@
   <!-- 框架script文件 -->
   <script src="./static/js/owo.core.js" type="text/javascript" charset="UTF-8"></script>
   <script>
-    // 模块 music 的script代码
+    // 模块 playMusic 的script代码
     // 微信自动播放音乐
     document.addEventListener("WeixinJSBridgeReady", function() {
       owo.script.playMusic.play();
@@ -145,14 +145,59 @@
           }
         }
       },
-      "page1": {},
-      "page2": {},
+      "page1": {
+        "created": function created() {
+          owo.tool.touch({
+            el: this.$el,
+            end: function end(e) {
+              if (e.swipe[0] < -100) {
+                owo.go({
+                  page: 'page2',
+                  noBack: true
+                });
+              }
+            }
+          });
+        }
+      },
+      "page2": {
+        "created": function created() {
+          owo.tool.touch({
+            el: this.$el,
+            end: function end(e) {
+              if (e.swipe[0] < -100) {
+                owo.go({
+                  page: 'page3',
+                  noBack: true
+                });
+              } else if (e.swipe[0] > 100) {
+                owo.go({
+                  page: 'page1',
+                  noBack: true
+                });
+              }
+            }
+          });
+        }
+      },
       "page3": {
         "data": {
           "nowIndex": 0,
           "allNumber": 0
         },
         "created": function created() {
+          // 滑动检测
+          owo.tool.touch({
+            el: this.$el,
+            end: function end(e) {
+              if (e.swipe[0] > 100) {
+                owo.go({
+                  page: 'page2',
+                  noBack: true
+                });
+              }
+            }
+          });
           var imageList = owo.query('.image-list .so');
           this.data.allNumber = imageList.length;
           console.log(imageList);
@@ -175,7 +220,10 @@
           if (this.data.nowIndex > 0) {
             this.showImageIndex(--this.data.nowIndex);
           } else {
-            owo.tool.toast('已经是最前了!');
+            owo.go({
+              page: 'page2',
+              noBack: true
+            });
           }
         },
         "next": function next() {
@@ -194,7 +242,7 @@
           this.$el.style.top = '-100%';
         }
       },
-      "music": {
+      "playMusic": {
         "data": {
           "music": null,
           "musicIsPlay": false
@@ -207,7 +255,7 @@
 
           if (!this.data.musicIsPlay) {
             this.data.musicIsPlay = true;
-            this.data.music = new Audio("https://cunchu.site/ozzx/resource/bg.mp3");
+            this.data.music = new Audio("./static/resource/bg.mp3");
             this.data.music.volume = 0.2;
             this.data.music.loop = true;
             this.data.music.play();
@@ -228,10 +276,10 @@
       }
     };
     owo.globalAni = {
-      "in": "moveToLeftFade",
-      "out": "moveFromRightFade",
-      "backIn": "moveToRightFade",
-      "backOut": "moveFromLeftFade"
+      "in": "moveToLeft",
+      "out": "moveFromRight",
+      "backIn": "moveToRight",
+      "backOut": "moveFromLeft"
     };
   </script>
 </body>
@@ -239,3 +287,4 @@
 </html>
 
 <script src="./static/js/toast.js.js" type="text/javascript" charset="UTF-8"></script>
+<script src="./static/js/touch.js.js" type="text/javascript" charset="UTF-8"></script>

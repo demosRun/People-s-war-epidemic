@@ -1,4 +1,4 @@
-// Wed Mar 25 2020 22:57:00 GMT+0800 (GMT+08:00)
+// Thu Mar 26 2020 10:25:04 GMT+0800 (GMT+08:00)
 var owo = {tool: {},state: {},};
 /* 方法合集 */
 var _owo = {}
@@ -589,6 +589,11 @@ _owo.showPage = function() {
   owo.entry = document.querySelector('[template]').getAttribute('template')
   // 取出URL地址判断当前所在页面
   var pageArg = _owo.getarg(window.location.hash)
+  
+  if (pageArg !== null) {
+    window.location.href = ''
+    return
+  }
   
   
 

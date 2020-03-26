@@ -49,7 +49,7 @@ list-style: none;
 }
 
 .loading-box {
-z-index: 100;
+z-index: 101;
 background-image: url('../resource/page2.jpg');
 }
 
@@ -203,9 +203,9 @@ line-height: 50px;
 position: absolute;
 right: 10px;
 top: 10%;
-z-index: 9;
 width: 67px;
 height: 67px;
+z-index: 100;
 }
 
 .music-menu .music-icon {
@@ -262,62 +262,63 @@ animation: musicturn 12s linear infinite;
 }
 }
 /* 页面切换动画 */
-.o-page-moveToLeftFade {
--webkit-animation: moveToLeftFade .7s ease both;
--moz-animation: moveToLeftFade .7s ease both;
-animation: moveToLeftFade .7s ease both;
-}
-@-webkit-keyframes moveToLeftFade {
-to { opacity: 0; -webkit-transform: translateX(-100%); }
-}
-@-moz-keyframes moveToLeftFade {
-to { opacity: 0; -moz-transform: translateX(-100%); }
-}
-@keyframes moveToLeftFade {
-to { opacity: 0; transform: translateX(-100%); }
-}
-.o-page-moveFromRightFade {
--webkit-animation: moveFromRightFade .7s ease both;
--moz-animation: moveFromRightFade .7s ease both;
-animation: moveFromRightFade .7s ease both;
+.o-page-moveToLeft {
+-webkit-animation: moveToLeft .6s ease both;
+-moz-animation: moveToLeft .6s ease both;
+animation: moveToLeft .6s ease both;
 }
 
-@-webkit-keyframes moveFromRightFade {
-from { opacity: 0; -webkit-transform: translateX(100%); }
+@-webkit-keyframes moveToLeft {
+to { -webkit-transform: translateX(-100%); }
 }
-@-moz-keyframes moveFromRightFade {
-from { opacity: 0; -moz-transform: translateX(100%); }
+@-moz-keyframes moveToLeft {
+to { -moz-transform: translateX(-100%); }
 }
-@keyframes moveFromRightFade {
-from { opacity: 0; transform: translateX(100%); }
+@keyframes moveToLeft {
+to { transform: translateX(-100%); }
 }
-.o-page-moveToRightFade {
--webkit-animation: moveToRightFade .7s ease both;
--moz-animation: moveToRightFade .7s ease both;
-animation: moveToRightFade .7s ease both;
-}
-
-@-webkit-keyframes moveToRightFade {
-to { opacity: 0; -webkit-transform: translateX(100%); }
-}
-@-moz-keyframes moveToRightFade {
-to { opacity: 0; -moz-transform: translateX(100%); }
-}
-@keyframes moveToRightFade {
-to { opacity: 0; transform: translateX(100%); }
-}
-.o-page-moveFromLeftFade {
--webkit-animation: moveFromLeftFade .7s ease both;
--moz-animation: moveFromLeftFade .7s ease both;
-animation: moveFromLeftFade .7s ease both;
+.o-page-moveFromRight {
+-webkit-animation: moveFromRight .6s ease both;
+-moz-animation: moveFromRight .6s ease both;
+animation: moveFromRight .6s ease both;
 }
 
-@-webkit-keyframes moveFromLeftFade {
-from { opacity: 0; -webkit-transform: translateX(-100%); }
+@-webkit-keyframes moveFromRight {
+from { -webkit-transform: translateX(100%); }
 }
-@-moz-keyframes moveFromLeftFade {
-from { opacity: 0; -moz-transform: translateX(-100%); }
+@-moz-keyframes moveFromRight {
+from { -moz-transform: translateX(100%); }
 }
-@keyframes moveFromLeftFade {
-from { opacity: 0; transform: translateX(-100%); }
+@keyframes moveFromRight {
+from { transform: translateX(100%); }
+}
+.o-page-moveToRight {
+-webkit-animation: moveToRight .6s ease both;
+-moz-animation: moveToRight .6s ease both;
+animation: moveToRight .6s ease both;
+}
+
+@-webkit-keyframes moveToRight {
+to { -webkit-transform: translateX(100%); }
+}
+@-moz-keyframes moveToRight {
+to { -moz-transform: translateX(100%); }
+}
+@keyframes moveToRight {
+to { transform: translateX(100%); }
+}
+.o-page-moveFromLeft {
+-webkit-animation: moveFromLeft .6s ease both;
+-moz-animation: moveFromLeft .6s ease both;
+animation: moveFromLeft .6s ease both;
+}
+
+@-webkit-keyframes moveFromLeft {
+from { -webkit-transform: translateX(-100%); }
+}
+@-moz-keyframes moveFromLeft {
+from { -moz-transform: translateX(-100%); }
+}
+@keyframes moveFromLeft {
+from { transform: translateX(-100%); }
 }

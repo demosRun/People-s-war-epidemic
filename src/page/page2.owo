@@ -1,12 +1,30 @@
 <template lang="pug">
 <div class="page-2">
-  <img class="so so-0" src="@|83.png|" o-animation="shrink" go="page3">
+  <img class="so so-0" src="@|83.png|" o-animation="shrink" go="page3/////true">
   <img class="so so-1" src="@|62.png|">
   <img class="so so-2" src="@|146.jpg|">
 </div>
 </template>
 <script>
 module.exports = {
+  created: function () {
+    owo.tool.touch({
+      el: this.$el,
+      end: function end(e) {
+        if (e.swipe[0] < -100) {
+          owo.go({
+            page: 'page3',
+            noBack: true
+          })
+        } else if (e.swipe[0] > 100) {
+          owo.go({
+            page: 'page1',
+            noBack: true
+          })
+        }
+      }
+    })
+  }
 }
 </script>
 <style lang="less">

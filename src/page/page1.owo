@@ -1,13 +1,23 @@
 <template lang="pug">
 .page-1
-  img.so.so-0(src="@|10.png|" o-animation="shrink" go="page2")
+  img.so.so-0(src="@|10.png|" o-animation="shrink" go="page2/////true")
   img.so.so-1(src="@|33.jpg|")
 </template>
 
 <script>
   module.exports = {
     created: function () {
-      
+      owo.tool.touch({
+        el: this.$el,
+        end: function end(e) {
+          if (e.swipe[0] < -100) {
+            owo.go({
+              page: 'page2',
+              noBack: true
+            })
+          }
+        }
+      })
     }
   }
 </script>

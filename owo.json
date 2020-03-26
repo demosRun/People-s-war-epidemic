@@ -89,6 +89,11 @@
 			"name": "toast.js",
 			"src": "./owo_modules/toast.js",
 			"afterbody": true
+		},
+		{
+			"name": "touch.js",
+			"src": "./owo_modules/touch.js",
+			"afterbody": true
 		}
 	],
 	"styleList": [
@@ -125,7 +130,7 @@
 			"type": "block"
 		},
 		{
-			"name": "music",
+			"name": "playMusic",
 			"src": "/src/module/music.owo",
 			"type": "block"
 		}
@@ -167,14 +172,15 @@
 				"merge": false,
 				"allAnimate": false
 			},
-			"handleLink": true
+			"handleLink": true,
+			"startAtHome": true
 		}
 	},
 	"container": "scale-box",
 	"globalAni": {
-		"in": "moveToLeftFade",
-		"out": "moveFromRightFade",
-		"backIn": "moveToRightFade",
-		"backOut": "moveFromLeftFade"
+		"in": "moveToLeft",
+		"out": "moveFromRight",
+		"backIn": "moveToRight",
+		"backOut": "moveFromLeft"
 	}
 }

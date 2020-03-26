@@ -1,6 +1,6 @@
 <template lang="pug">
-.blinker-poster
-  .poster-box(o-tap="hidePoster")
+.blinker-poster(o-tap="hidePoster")
+  .poster-box
     img.poster(src="@|poster.jpg|")
     p 长按保存图片
 </template>

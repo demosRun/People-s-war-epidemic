@@ -20,7 +20,7 @@
       console.log('播放音乐')
       if (!this.data.musicIsPlay) {
         this.data.musicIsPlay = true
-        this.data.music = new Audio("https://cunchu.site/ozzx/resource/bg.mp3")
+        this.data.music = new Audio("@|bg.mp3|")
         this.data.music.volume = 0.2
         this.data.music.loop = true
         this.data.music.play()
@@ -47,9 +47,9 @@
   position: absolute;
   right: 10px;
   top: 10%;
-  z-index: 9;
   width: 67px;
   height: 67px;
+  z-index: 100;
 }
 .music-icon {
   width: 67px;
